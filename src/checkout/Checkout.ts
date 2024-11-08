@@ -22,10 +22,11 @@ export class Checkout {
       // Add items not covered by any rule at their default price
     Object.keys(this.cart).forEach((sku) => {
         if (!this.pricingRules.some(
-            (rule) =>
-              ((rule as any).sku === sku) ||
-              ((rule as any).sku === sku)
+            (rule: any) =>
+              (rule.sku === sku) ||
+              (rule.sku === sku)
         )) {
+          console.log(sku)
           const product = this.products[sku];
           if (product) total += this.cart[sku] * product.price;
         }
